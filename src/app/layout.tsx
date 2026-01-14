@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { StockForm } from "@/modules/stocks/presentation/components";
+import { StockWatchlistSidebar } from "@/modules/stocks/presentation/components";
 
 import "./globals.css";
 import { Providers } from "./providers";
@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>
-          <StockForm />
+          <StockWatchlistSidebar />
           {children}
         </Providers>
       </body>
