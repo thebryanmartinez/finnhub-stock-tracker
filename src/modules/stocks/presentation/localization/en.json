@@ -1,0 +1,21 @@
+{
+  "form": {
+    "title": "Add to watchlist",
+    "symbol": {
+      "label": "Stock Symbol"
+    },
+    "priceAlert": {
+      "label": "Price Alert ($)"
+    },
+    "errors": {
+      "priceAlert": "Price alert must be greater than 0"
+    },
+    "buttons": {
+      "addStock": "Add Stock"
+    }
+  },
+  "header": {
+    "title": "Finnhub Stocks",
+    "subtitle": "Real time stock tracker"
+  }
+}
