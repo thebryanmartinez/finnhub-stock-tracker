@@ -8,7 +8,8 @@
       "label": "Price Alert ($)"
     },
     "errors": {
-      "priceAlert": "Price alert must be greater than 0"
+      "priceAlert": "Price alert must be greater than 0",
+      "errorAddingStock": "There was an error while adding the stock. Try again."
     },
     "buttons": {
       "addStock": "Add Stock"
@@ -17,5 +18,13 @@
   "header": {
     "title": "Finnhub Stocks",
     "subtitle": "Real time stock tracker"
+  },
+  "watchlist": {
+    "title": "Your watchlist",
+    "priceAlert": "Price Alert: ${priceAlert}",
+    "empty": {
+      "title": "No stocks tracked yet",
+      "description": "Add stocks to your watchlist to get real time price alerts"
+    }
   }
 }
