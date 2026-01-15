@@ -14,7 +14,7 @@ export const StockCardList = () => {
     return (
       <Empty className='border border-dashed'>
         <EmptyHeader>
-          <EmptyTitle className='text-base'>{strings.stockCardList.empty.title}</EmptyTitle>
+          <EmptyTitle className='text-base'>{strings.card.empty.title}</EmptyTitle>
           <EmptyDescription className='text-sm'>{strings.card.empty.description}</EmptyDescription>
         </EmptyHeader>
       </Empty>
