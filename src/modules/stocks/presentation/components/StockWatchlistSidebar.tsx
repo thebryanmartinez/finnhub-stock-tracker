@@ -7,9 +7,9 @@ import {
   SidebarGroup,
   SidebarHeader,
 } from "@/modules/shared/ui";
+import { StockForm, Watchlist } from "@/modules/stocks/presentation/components";
 
 import { strings } from "../localization";
-import { StockForm } from "./StockForm";
 
 const Header = () => {
   return (
@@ -36,6 +36,9 @@ export const StockWatchlistSidebar = () => {
       <SidebarContent className='p-4'>
         <SidebarGroup>
           <StockForm />
+        </SidebarGroup>
+        <SidebarGroup>
+          <Watchlist />
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter />
