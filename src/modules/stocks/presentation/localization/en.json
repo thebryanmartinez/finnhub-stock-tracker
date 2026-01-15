@@ -25,6 +25,29 @@
     "empty": {
       "title": "No stocks tracked yet",
       "description": "Add stocks to your watchlist to get real time price alerts"
+    },
+    "footer": {
+      "close": "Close"
     }
+  },
+  "card": {
+    "target": "Target:",
+    "empty": {
+      "title": "No stocks to display",
+      "description": "If you want to see stocks here, you'll need to add them from the form on the left"
+    }
+  },
+  "chart": {
+    "empty": {
+      "title": "No stock history to display",
+      "description": "Add stocks to your watchlist to see the movement of stocks"
+    },
+    "title": "Stock price history",
+    "priceOverTime": " price over time",
+    "noStockSelected": "No stock selected",
+    "placeholder": "Select a stock"
+  },
+  "openWatchlist": {
+    "open": "Open Watchlist"
   }
 }
