@@ -4,7 +4,8 @@ import { ReactNode } from "react";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { SidebarProvider, SidebarTrigger } from "@/modules/shared/ui/sidebar";
+import { SidebarProvider } from "@/modules/shared/ui/sidebar";
+import { Toaster } from "@/modules/shared/ui/sonner";
 
 interface ProviderProps {
   children: ReactNode;
@@ -16,6 +17,7 @@ export const Providers = ({ children }: ProviderProps) => {
   return (
     <>
       <SidebarProvider>
+        <Toaster />
         <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
       </SidebarProvider>
     </>
