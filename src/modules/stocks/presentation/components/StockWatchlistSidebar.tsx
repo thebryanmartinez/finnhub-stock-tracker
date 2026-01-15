@@ -1,13 +1,15 @@
 "use client";
 
-import { ChartSpline } from "lucide-react";
+import { ChartSpline, X } from "lucide-react";
 
 import {
+  Button,
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
   SidebarHeader,
+  useSidebar,
 } from "@/modules/shared/ui";
 import { StockForm, Watchlist } from "@/modules/stocks/presentation/components";
 import { strings } from "@/modules/stocks/presentation/localization";
@@ -26,6 +28,17 @@ const Header = () => {
         </span>
       </div>
     </div>
+  );
+};
+
+export const Footer = () => {
+  const { toggleSidebar } = useSidebar();
+
+  return (
+    <Button onClick={toggleSidebar} className='w-full md:hidden mb-10' variant='outline'>
+      <X />
+      {strings.watchlist.footer.close}
+    </Button>
   );
 };
 
@@ -54,7 +67,9 @@ export const StockWatchlistSidebar = () => {
           <Watchlist stocks={stocks} onRemoveStock={handleRemoveStock} />
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter className='p-4'>
+        <Footer />
+      </SidebarFooter>
     </Sidebar>
   );
 };
