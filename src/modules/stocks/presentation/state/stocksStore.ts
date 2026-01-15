@@ -5,6 +5,8 @@ import { StocksState } from "@/modules/stocks/presentation/interfaces";
 export const useStocksStore = create<StocksState>((set, get) => ({
   stocks: {},
 
+  getStocks: () => get().stocks,
+
   addStock: (symbol, priceAlert) => {
     const stocks = get().stocks;
     if (stocks[symbol]) return;

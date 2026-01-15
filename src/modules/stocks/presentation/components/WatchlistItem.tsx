@@ -6,18 +6,20 @@ import {
   ItemActions,
   ItemContent,
   ItemDescription,
-  ItemHeader,
   ItemTitle,
 } from "@/modules/shared/ui";
 import { Stock } from "@/modules/stocks/domain/entitites";
 import { strings } from "@/modules/stocks/presentation/localization";
-import { useStocksStore } from "@/modules/stocks/presentation/state";
 
-export const WatchlistItem = ({ stock }: { stock: Stock }) => {
-  const { removeStock } = useStocksStore();
-
+export const WatchlistItem = ({
+  stock,
+  onRemove,
+}: {
+  stock: Stock;
+  onRemove: (symbol: string) => void;
+}) => {
   const handleRemoveStock = () => {
-    removeStock(stock.symbol);
+    onRemove(stock.symbol);
   };
 
   return (

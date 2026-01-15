@@ -1,10 +1,6 @@
 import { Stock } from "@/modules/stocks/domain/entitites";
+import { IStockRepository } from "@/modules/stocks/domain/repositories";
 
-export type StocksState = {
+export interface StocksState extends IStockRepository {
   stocks: Record<string, Stock>;
-
-  addStock: (symbol: string, priceAlert: number) => void;
-  removeStock: (symbol: string) => void;
-  updatePrice: (symbol: string, price: number, isBelowAlert: boolean) => void;
-  reset: () => void;
-};
+}
