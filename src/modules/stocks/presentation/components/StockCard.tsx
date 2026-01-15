@@ -23,19 +23,21 @@ export const StockCard = ({ stock }: { stock: Stock }) => {
   const changeSymbol = priceChange >= 0 ? "+" : "";
 
   return (
-    <Card className={cardColorClass}>
-      <CardHeader className='pb-3'>
-        <CardTitle className='text-xl font-bold text-gray-900'>{stock.symbol}</CardTitle>
+    <Card className={`${cardColorClass} p-2 sm:p-4`}>
+      <CardHeader className='pb-1 sm:pb-3 px-2 sm:px-4'>
+        <CardTitle className='text-base sm:text-xl font-bold text-gray-900'>
+          {stock.symbol}
+        </CardTitle>
         <CardAction className='text-xs text-muted-foreground flex items-center gap-1'>
           {strings.card.target}
-          <span className='text-sm font-bold'>${stock.priceAlert.toFixed(2)}</span>
+          <span className='text-xs sm:text-sm font-bold'>${stock.priceAlert.toFixed(2)}</span>
         </CardAction>
       </CardHeader>
-      <CardContent className='space-y-4'>
-        <div className='text-3xl font-bold text-gray-900'>${stock.price.toFixed(2)}</div>
+      <CardContent className='space-y-1 sm:space-y-4 py-1 sm:py-4 px-2 sm:px-4'>
+        <div className='text-xl sm:text-3xl font-bold text-gray-900'>${stock.price.toFixed(2)}</div>
       </CardContent>
 
-      <CardFooter className='pt-3'>
+      <CardFooter className='pt-1 sm:pt-3 px-2 sm:px-4'>
         <Badge variant={changeBadgeVariant} className='text-xs'>
           {changeSymbol}
           {priceChange.toFixed(2)} ({changeSymbol}

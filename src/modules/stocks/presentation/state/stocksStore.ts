@@ -43,7 +43,7 @@ export const useStocksStore = create<StocksState>((set, get) => ({
           price,
           isBelowAlert,
           previousPrice: stock.price,
-          history: [...stock.history, price].slice(-50),
+          history: [...stock.history, price].slice(-40),
         },
       },
     });

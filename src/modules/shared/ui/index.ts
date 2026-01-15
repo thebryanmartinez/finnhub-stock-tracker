@@ -1,6 +1,7 @@
 export * from "./badge";
 export * from "./button";
 export * from "./card";
+export * from "./chart";
 export * from "./empty";
 export * from "./field";
 export * from "./input";

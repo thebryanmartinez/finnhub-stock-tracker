@@ -4,3 +4,6 @@ export * from "./Watchlist";
 export * from "./WatchlistItem";
 export * from "./StockCardList";
 export * from "./StockCard";
+export * from "./StockChart";
+export * from "./StockChartContainer";
+export * from "./WatchlistOpenButton";
