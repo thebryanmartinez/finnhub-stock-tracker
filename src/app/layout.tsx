@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { StockWatchlistSidebar } from "@/modules/stocks/presentation/components";
+import { ReactQueryProvider } from "@/modules/shared/components";
 
 import "./globals.css";
-import { Providers } from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,12 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Providers>
-          <StockWatchlistSidebar />
+      <ReactQueryProvider>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           {children}
-        </Providers>
-      </body>
+        </body>
+      </ReactQueryProvider>
     </html>
   );
 }
