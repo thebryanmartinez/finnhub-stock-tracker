@@ -1,13 +1,17 @@
 "use client";
 
 import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from "@/modules/shared/ui";
+import { Stock } from "@/modules/stocks/domain/entitites";
 import { WatchlistItem } from "@/modules/stocks/presentation/components";
 import { strings } from "@/modules/stocks/presentation/localization";
-import { useStocksStore } from "@/modules/stocks/presentation/state";
 
-export const Watchlist = () => {
-  const stocks = useStocksStore((state) => state.stocks);
-
+export const Watchlist = ({
+  stocks,
+  onRemoveStock,
+}: {
+  stocks: Record<string, Stock>;
+  onRemoveStock: (symbol: string) => void;
+}) => {
   return (
     <section className='flex-1 flex flex-col gap-4 w-full'>
       <span className='font-bold'>{strings.watchlist.title}</span>
@@ -22,7 +26,9 @@ export const Watchlist = () => {
             </EmptyHeader>
           </Empty>
         ) : (
-          Object.values(stocks).map((stock) => <WatchlistItem key={stock.symbol} stock={stock} />)
+          Object.values(stocks).map((stock) => (
+            <WatchlistItem key={stock.symbol} stock={stock} onRemove={onRemoveStock} />
+          ))
         )}
       </article>
     </section>

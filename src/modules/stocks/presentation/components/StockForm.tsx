@@ -26,11 +26,15 @@ import {
   STOCK_OPTIONS,
   STOCK_SYMBOL_SELECT,
 } from "../constants";
-import { useAddStockForm } from "../forms";
+import { useAddStockForm } from "../hooks";
 import { strings } from "../localization";
 
-export const StockForm = () => {
-  const { form, onSubmit } = useAddStockForm();
+export const StockForm = ({
+  onAddStock,
+}: {
+  onAddStock: (symbol: string, priceAlert: number) => void;
+}) => {
+  const { form, onSubmit } = useAddStockForm(onAddStock);
 
   return (
     <form id={ADD_STOCK_FORM_ID} onSubmit={form.handleSubmit(onSubmit)}>

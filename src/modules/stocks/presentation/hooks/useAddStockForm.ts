@@ -4,12 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-import { strings } from "../localization";
-import { useStocksStore } from "../state";
-import { AddStockFormData, addStockSchema } from "./index";
+import { AddStockFormData, addStockSchema } from "@/modules/stocks/presentation/forms";
+import { strings } from "@/modules/stocks/presentation/localization";
 
-export function useAddStockForm() {
-  const addStock = useStocksStore((state) => state.addStock);
+export function useAddStockForm(onAddStock: (symbol: string, priceAlert: number) => void) {
   const form = useForm<AddStockFormData>({
     resolver: zodResolver(addStockSchema),
     defaultValues: {
@@ -18,11 +16,11 @@ export function useAddStockForm() {
     },
   });
 
-  const onSubmit = async (data: AddStockFormData) => {
+  const onSubmit = (data: AddStockFormData) => {
     try {
-      addStock(data.symbol, data.priceAlert);
+      onAddStock(data.symbol, data.priceAlert);
       form.reset();
-    } catch (error: unknown) {
+    } catch {
       toast.error(strings.form.errors.errorAddingStock);
     }
   };

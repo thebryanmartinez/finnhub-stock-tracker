@@ -1,3 +1,5 @@
+"use client";
+
 import { ChartSpline } from "lucide-react";
 
 import {
@@ -8,8 +10,8 @@ import {
   SidebarHeader,
 } from "@/modules/shared/ui";
 import { StockForm, Watchlist } from "@/modules/stocks/presentation/components";
-
-import { strings } from "../localization";
+import { strings } from "@/modules/stocks/presentation/localization";
+import { useStockRepository } from "@/modules/stocks/presentation/state/StockRepositoryProvider";
 
 const Header = () => {
   return (
@@ -28,6 +30,17 @@ const Header = () => {
 };
 
 export const StockWatchlistSidebar = () => {
+  const repository = useStockRepository();
+  const stocks = repository.getStocks();
+
+  const handleAddStock = (symbol: string, priceAlert: number) => {
+    repository.addStock(symbol, priceAlert);
+  };
+
+  const handleRemoveStock = (symbol: string) => {
+    repository.removeStock(symbol);
+  };
+
   return (
     <Sidebar>
       <SidebarHeader className='p-4'>
@@ -35,10 +48,10 @@ export const StockWatchlistSidebar = () => {
       </SidebarHeader>
       <SidebarContent className='p-4'>
         <SidebarGroup>
-          <StockForm />
+          <StockForm onAddStock={handleAddStock} />
         </SidebarGroup>
         <SidebarGroup>
-          <Watchlist />
+          <Watchlist stocks={stocks} onRemoveStock={handleRemoveStock} />
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter />
