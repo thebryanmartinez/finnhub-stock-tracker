@@ -26,5 +26,12 @@
       "title": "No stocks tracked yet",
       "description": "Add stocks to your watchlist to get real time price alerts"
     }
+  },
+  "card": {
+    "target": "Target:",
+    "empty": {
+      "title": "No stocks to display",
+      "description": "If you want to see stocks here, you'll need to add them from the form on the left"
+    }
   }
 }
