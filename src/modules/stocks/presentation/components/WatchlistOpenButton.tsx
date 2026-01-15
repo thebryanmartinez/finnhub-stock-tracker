@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { PanelLeftIcon } from "lucide-react";
 
