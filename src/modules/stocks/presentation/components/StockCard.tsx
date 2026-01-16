@@ -5,6 +5,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  Skeleton,
 } from "@/modules/shared/ui";
 import { Badge } from "@/modules/shared/ui";
 import { Stock } from "@/modules/stocks/domain/entitites";
@@ -35,16 +36,24 @@ export const StockCard = ({ stock }: { stock: Stock }) => {
       </CardHeader>
       <CardContent className='space-y-1 sm:space-y-4 py-1 sm:py-4 px-2 sm:px-4'>
         <div className='text-xl sm:text-3xl font-bold text-foreground'>
-          ${stock.price.toFixed(2)}
+          {stock.price === 0 ? (
+            <Skeleton className='h-7 sm:h-9 w-24' />
+          ) : (
+            `$${stock.price.toFixed(2)}`
+          )}
         </div>
       </CardContent>
 
       <CardFooter className='pt-1 sm:pt-3 px-2 sm:px-4'>
-        <Badge variant={changeBadgeVariant} className='text-xs'>
-          {changeSymbol}
-          {priceChange.toFixed(2)} ({changeSymbol}
-          {priceChangePercent}%)
-        </Badge>
+        {stock.price === 0 ? (
+          <Skeleton className='h-5 w-28' />
+        ) : (
+          <Badge variant={changeBadgeVariant} className='text-xs'>
+            {changeSymbol}
+            {priceChange.toFixed(2)} ({changeSymbol}
+            {priceChangePercent}%)
+          </Badge>
+        )}
       </CardFooter>
     </Card>
   );

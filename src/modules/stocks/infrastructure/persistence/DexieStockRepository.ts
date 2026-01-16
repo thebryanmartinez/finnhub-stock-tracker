@@ -1,3 +1,5 @@
+import { toast } from "sonner";
+
 import { Stock } from "@/modules/stocks/domain/entitites";
 import { strings } from "@/modules/stocks/presentation/localization";
 
@@ -15,7 +17,7 @@ export class DexieStockRepository {
         {} as Record<string, Stock>
       );
     } catch (error) {
-      console.error(strings.dexieRepository.errors.loadingStocks, error);
+      toast.error(strings.dexieRepository.errors.loadingStocks);
       return {};
     }
   }
@@ -32,7 +34,7 @@ export class DexieStockRepository {
         history: [],
       });
     } catch (error) {
-      console.error(strings.dexieRepository.errors.addingStock, error);
+      toast.error(strings.dexieRepository.errors.addingStock);
     }
   }
 
@@ -40,7 +42,7 @@ export class DexieStockRepository {
     try {
       await db.stocks.delete(symbol);
     } catch (error) {
-      console.error(strings.dexieRepository.errors.removingStock, error);
+      toast.error(strings.dexieRepository.errors.removingStock);
     }
   }
 
@@ -56,7 +58,7 @@ export class DexieStockRepository {
         history: [...stock.history, price].slice(-40),
       });
     } catch (error) {
-      console.error(strings.dexieRepository.errors.updatingStock, error);
+      toast.error(strings.dexieRepository.errors.updatingStock);
     }
   }
 
@@ -64,7 +66,7 @@ export class DexieStockRepository {
     try {
       await db.stocks.update(symbol, { isNotificationSent: true });
     } catch (error) {
-      console.error(strings.dexieRepository.errors.markingNotificationSent, error);
+      toast.error(strings.dexieRepository.errors.markingNotificationSent);
     }
   }
 }

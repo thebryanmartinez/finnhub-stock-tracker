@@ -4,8 +4,6 @@ import { ReactNode } from "react";
 
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
 import { SidebarProvider } from "@/modules/shared/ui/sidebar";
 import { Toaster } from "@/modules/shared/ui/sonner";
 import { StockRepositoryProvider } from "@/modules/stocks/presentation/state/StockRepositoryProvider";
@@ -15,8 +13,6 @@ interface ProviderProps {
 }
 
 export const Providers = ({ children }: ProviderProps) => {
-  const queryClient = new QueryClient();
-
   return (
     <>
       <StockRepositoryProvider>
@@ -28,7 +24,7 @@ export const Providers = ({ children }: ProviderProps) => {
             disableTransitionOnChange
           >
             <Toaster />
-            <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+            {children}
           </NextThemesProvider>
         </SidebarProvider>
       </StockRepositoryProvider>
