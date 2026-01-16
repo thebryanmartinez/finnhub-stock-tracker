@@ -7,3 +7,4 @@ export * from "./StockCard";
 export * from "./StockChart";
 export * from "./StockChartContainer";
 export * from "./WatchlistOpenButton";
+export * from "./PushNotificationsEnabler";
