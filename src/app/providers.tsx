@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 import { SidebarProvider } from "@/modules/shared/ui/sidebar";
 import { Toaster } from "@/modules/shared/ui/sonner";
@@ -13,14 +13,19 @@ interface ProviderProps {
 }
 
 export const Providers = ({ children }: ProviderProps) => {
-  const queryClient = new QueryClient();
-
   return (
     <>
       <StockRepositoryProvider>
         <SidebarProvider>
-          <Toaster />
-          <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+          <NextThemesProvider
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Toaster />
+            {children}
+          </NextThemesProvider>
         </SidebarProvider>
       </StockRepositoryProvider>
     </>

@@ -2,6 +2,7 @@
 
 import { ChartSpline, X } from "lucide-react";
 
+import { ThemeToggle } from "@/modules/shared/components";
 import {
   Button,
   Sidebar,
@@ -45,10 +46,13 @@ export const Footer = () => {
   const { toggleSidebar } = useSidebar();
 
   return (
-    <Button onClick={toggleSidebar} className='w-full md:hidden mb-10' variant='outline'>
-      <X />
-      {strings.watchlist.footer.close}
-    </Button>
+    <div className='mb-10 md:mb-0 gap-4 flex flex-col'>
+      <Button onClick={toggleSidebar} className='w-full md:hidden' variant='outline'>
+        <X />
+        {strings.watchlist.footer.close}
+      </Button>
+      <ThemeToggle />
+    </div>
   );
 };
 

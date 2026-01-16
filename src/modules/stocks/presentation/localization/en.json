@@ -65,11 +65,11 @@
   "dexieRepository": {
     "errors": {
       "loadingStocks": "Error while loading stocks from IndexedDB",
-      "addingStock": "Error adding stock to IndexedDB:",
-      "removingStock": "Error removing stock from IndexedDB:",
-      "updatingStock": "Error updating stock price in IndexedDB:",
-      "markingNotificationSent": "Error marking notification sent in IndexedDB:",
-      "errorClearingStocks": "Error clearing stocks from IndexedDB:"
+      "addingStock": "Error adding stock to IndexedDB",
+      "removingStock": "Error removing stock from IndexedDB",
+      "updatingStock": "Error updating stock price in IndexedDB",
+      "markingNotificationSent": "Error marking notification sent in IndexedDB",
+      "errorClearingStocks": "Error clearing stocks from IndexedDB"
     }
   }
 }
