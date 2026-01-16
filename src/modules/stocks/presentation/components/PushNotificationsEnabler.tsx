@@ -12,7 +12,9 @@ export function PushNotificationsEnabler() {
     return null;
   }
 
-  const buttonClass = subscription ? "border-green-300" : "border-red-300";
+  const buttonClass = subscription
+    ? "border-green-300 dark:border-green-900/60"
+    : "border-red-300 dark:border-red-900/60";
 
   return (
     <Button
