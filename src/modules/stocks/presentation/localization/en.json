@@ -61,5 +61,14 @@
       "noSubscriptionError": "No subscription error",
       "failedToSend": "Failed to send notification"
     }
+  },
+  "dexieRepository": {
+    "errors": {
+      "addingStock": "Error adding stock to IndexedDB:",
+      "removingStock": "Error removing stock from IndexedDB:",
+      "updatingStock": "Error updating stock price in IndexedDB:",
+      "markingNotificationSent": "Error marking notification sent in IndexedDB:",
+      "errorClearingStocks": "Error clearing stocks from IndexedDB:"
+    }
   }
 }

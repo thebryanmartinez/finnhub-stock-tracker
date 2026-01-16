@@ -15,6 +15,7 @@ export const useStockWebSocket = (symbols: string[]) => {
   const reconnectAttemptsRef = useRef(0);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isConnectingRef = useRef(false);
+  const pendingSymbolsRef = useRef<string[]>([]);
   const maxReconnectAttempts = 3;
   const reconnectDelay = 5000;
 
@@ -38,6 +39,16 @@ export const useStockWebSocket = (symbols: string[]) => {
         socketRef.current?.send(JSON.stringify({ type: "subscribe", symbol }));
       });
       subscribedSymbolsRef.current = [...symbols];
+
+      if (pendingSymbolsRef.current.length > 0) {
+        pendingSymbolsRef.current.forEach((symbol) => {
+          if (!subscribedSymbolsRef.current.includes(symbol)) {
+            socketRef.current?.send(JSON.stringify({ type: "subscribe", symbol }));
+            subscribedSymbolsRef.current.push(symbol);
+          }
+        });
+        pendingSymbolsRef.current = [];
+      }
     };
 
     socketRef.current.onmessage = (event) => {
@@ -85,6 +96,7 @@ export const useStockWebSocket = (symbols: string[]) => {
 
   const updateSubscriptions = (newSymbols: string[]) => {
     if (socketRef.current?.readyState !== WebSocket.OPEN) {
+      pendingSymbolsRef.current = newSymbols;
       return;
     }
 
@@ -131,6 +143,8 @@ export const useStockWebSocket = (symbols: string[]) => {
       connectWebSocket();
     } else if (socketRef.current.readyState === WebSocket.OPEN) {
       updateSubscriptions(symbols);
+    } else if (socketRef.current.readyState === WebSocket.CONNECTING) {
+      pendingSymbolsRef.current = symbols;
     }
   }, [symbols]);
 
