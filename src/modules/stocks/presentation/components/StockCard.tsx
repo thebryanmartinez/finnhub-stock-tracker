@@ -12,8 +12,8 @@ import { strings } from "@/modules/stocks/presentation/localization";
 
 export const StockCard = ({ stock }: { stock: Stock }) => {
   const cardColorClass = stock.isBelowAlert
-    ? "border-red-200 bg-red-50/50"
-    : "border-green-200 bg-green-50/50";
+    ? "border-red-200 bg-red-50/50 dark:border-red-900/60 dark:bg-red-950/30"
+    : "border-green-200 bg-green-50/50 dark:border-green-900/60 dark:bg-green-950/30";
 
   const priceChange = stock.price - stock.previousPrice;
   const priceChangePercent =
@@ -25,7 +25,7 @@ export const StockCard = ({ stock }: { stock: Stock }) => {
   return (
     <Card className={`${cardColorClass} p-2 sm:p-4`}>
       <CardHeader className='pb-1 sm:pb-3 px-2 sm:px-4'>
-        <CardTitle className='text-base sm:text-xl font-bold text-gray-900'>
+        <CardTitle className='text-base sm:text-xl font-bold text-foreground'>
           {stock.symbol}
         </CardTitle>
         <CardAction className='text-xs text-muted-foreground flex items-center gap-1'>
@@ -34,7 +34,9 @@ export const StockCard = ({ stock }: { stock: Stock }) => {
         </CardAction>
       </CardHeader>
       <CardContent className='space-y-1 sm:space-y-4 py-1 sm:py-4 px-2 sm:px-4'>
-        <div className='text-xl sm:text-3xl font-bold text-gray-900'>${stock.price.toFixed(2)}</div>
+        <div className='text-xl sm:text-3xl font-bold text-foreground'>
+          ${stock.price.toFixed(2)}
+        </div>
       </CardContent>
 
       <CardFooter className='pt-1 sm:pt-3 px-2 sm:px-4'>

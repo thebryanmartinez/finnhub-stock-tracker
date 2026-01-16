@@ -2,6 +2,8 @@
 
 import { ReactNode } from "react";
 
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { SidebarProvider } from "@/modules/shared/ui/sidebar";
@@ -19,8 +21,15 @@ export const Providers = ({ children }: ProviderProps) => {
     <>
       <StockRepositoryProvider>
         <SidebarProvider>
-          <Toaster />
-          <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+          <NextThemesProvider
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Toaster />
+            <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+          </NextThemesProvider>
         </SidebarProvider>
       </StockRepositoryProvider>
     </>
