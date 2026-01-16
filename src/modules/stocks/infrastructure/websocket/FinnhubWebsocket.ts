@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+import { toast } from "sonner";
+
 import { sendStockAlertNotification } from "@/app/actions";
 import { Trade } from "@/modules/stocks/domain/entitites";
 import { strings } from "@/modules/stocks/presentation/localization";
@@ -65,7 +67,7 @@ export const useStockWebSocket = (symbols: string[]) => {
           });
         }
       } catch (error) {
-        console.log(error);
+        toast.error(error as string);
       }
     };
 
@@ -129,7 +131,7 @@ export const useStockWebSocket = (symbols: string[]) => {
             await sendStockAlertNotification(stock.symbol, stock.priceAlert);
             repository.markNotificationSent(stock.symbol);
           } catch (error) {
-            console.error(strings.notifications.errors.failedToSend, error);
+            toast.error(strings.notifications.errors.failedToSend);
           }
         }
 
