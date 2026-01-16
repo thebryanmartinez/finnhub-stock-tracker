@@ -80,7 +80,6 @@ export const useStocksStore = create<StocksState>((set, get) => ({
   },
 }));
 
-// Initialize store from IndexedDB
 export const initializeStocksStore = async () => {
   const stocks = await repository.getStocks();
   useStocksStore.setState({ stocks });
