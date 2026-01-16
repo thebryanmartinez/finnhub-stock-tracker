@@ -41,6 +41,7 @@ The app is published with Vercel.
 - **Husky**: Git hooks for linting and commits message validation
 - **Commitlin**: Makes sure commits messgaes are well formatted
 - **Eslint & Prettier**: Code quality and formatting
+- **GitFlow**: Branch management (main, develop, feature/\*)
 
 Husky runs automatically when a commit is changed, formatting the modified changes.
 
