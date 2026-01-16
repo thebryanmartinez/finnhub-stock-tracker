@@ -33,7 +33,7 @@ export async function sendNotification(title: string, message: string) {
       JSON.stringify({
         title,
         body: message,
-        icon: "/icon.png",
+        icon: "/icon-512x512.png",
       })
     );
     return { success: true };
@@ -53,7 +53,7 @@ export async function sendStockAlertNotification(symbol: string, priceAlert: num
       JSON.stringify({
         title: strings.notifications.title,
         body: `${symbol} ${strings.notifications.message} ${priceAlert}!`,
-        icon: "/icon.png",
+        icon: "/icon-512x512.png",
       })
     );
     return { success: true };
