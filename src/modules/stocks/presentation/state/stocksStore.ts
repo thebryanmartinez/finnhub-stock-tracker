@@ -1,37 +1,68 @@
 import { create } from "zustand";
 
+import { DexieStockRepository } from "@/modules/stocks/infrastructure/persistence";
 import { StocksState } from "@/modules/stocks/presentation/interfaces";
+
+const repository = new DexieStockRepository();
 
 export const useStocksStore = create<StocksState>((set, get) => ({
   stocks: {},
 
   getStocks: () => get().stocks,
 
-  addStock: (symbol, priceAlert) => {
+  addStock: async (symbol, priceAlert) => {
     const stocks = get().stocks;
     if (stocks[symbol]) return;
+
+    const newStock = {
+      symbol,
+      price: 0,
+      priceAlert,
+      previousPrice: 0,
+      isBelowAlert: false,
+      isNotificationSent: false,
+      history: [],
+    };
 
     set({
       stocks: {
         ...stocks,
-        [symbol]: {
-          symbol,
-          price: 0,
-          priceAlert,
-          previousPrice: 0,
-          isBelowAlert: false,
-          history: [],
-        },
+        [symbol]: newStock,
       },
     });
+
+    await repository.addStock(symbol, priceAlert);
   },
 
-  removeStock: (symbol) => {
+  removeStock: async (symbol) => {
     const { [symbol]: _, ...rest } = get().stocks;
     set({ stocks: rest });
+    await repository.removeStock(symbol);
   },
 
-  updatePrice: (symbol, price, isBelowAlert) => {
+  updatePrice: async (symbol, price, isBelowAlert) => {
+    const stock = get().stocks[symbol];
+    if (!stock) return;
+
+    const updatedStock = {
+      ...stock,
+      price,
+      isBelowAlert,
+      previousPrice: stock.price,
+      history: [...stock.history, price].slice(-40),
+    };
+
+    set({
+      stocks: {
+        ...get().stocks,
+        [symbol]: updatedStock,
+      },
+    });
+
+    await repository.updatePrice(symbol, price, isBelowAlert);
+  },
+
+  markNotificationSent: async (symbol) => {
     const stock = get().stocks[symbol];
     if (!stock) return;
 
@@ -40,14 +71,16 @@ export const useStocksStore = create<StocksState>((set, get) => ({
         ...get().stocks,
         [symbol]: {
           ...stock,
-          price,
-          isBelowAlert,
-          previousPrice: stock.price,
-          history: [...stock.history, price].slice(-40),
+          isNotificationSent: true,
         },
       },
     });
-  },
 
-  reset: () => set({ stocks: {} }),
+    await repository.markNotificationSent(symbol);
+  },
 }));
+
+export const initializeStocksStore = async () => {
+  const stocks = await repository.getStocks();
+  useStocksStore.setState({ stocks });
+};

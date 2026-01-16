@@ -5,4 +5,5 @@ export type Stock = {
   isBelowAlert: boolean;
   history: number[];
   previousPrice: number;
+  isNotificationSent: boolean;
 };

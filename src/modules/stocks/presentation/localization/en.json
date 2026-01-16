@@ -17,7 +17,8 @@
   },
   "header": {
     "title": "Finnhub Stocks",
-    "subtitle": "Real time stock tracker"
+    "subtitle": "Real time stock tracker",
+    "priceAlerts": "Price alerts"
   },
   "watchlist": {
     "title": "Your watchlist",
@@ -49,5 +50,26 @@
   },
   "openWatchlist": {
     "open": "Open Watchlist"
+  },
+  "notifications": {
+    "title": "Stock Price Alert",
+    "message": "is below the price of $",
+    "notificationsEnabled": "Notifications are enabled",
+    "notificationsDisabled": "Notifications are disabled",
+    "errors": {
+      "noSubscriptionAvailable": "No subscription available",
+      "noSubscriptionError": "No subscription error",
+      "failedToSend": "Failed to send notification"
+    }
+  },
+  "dexieRepository": {
+    "errors": {
+      "loadingStocks": "Error while loading stocks from IndexedDB",
+      "addingStock": "Error adding stock to IndexedDB:",
+      "removingStock": "Error removing stock from IndexedDB:",
+      "updatingStock": "Error updating stock price in IndexedDB:",
+      "markingNotificationSent": "Error marking notification sent in IndexedDB:",
+      "errorClearingStocks": "Error clearing stocks from IndexedDB:"
+    }
   }
 }
