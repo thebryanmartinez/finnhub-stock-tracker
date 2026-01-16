@@ -33,7 +33,7 @@ export const useStockChart = (stocks: Stock[]) => {
     if (stocks.length > 0 && !stocks.find((s) => s.symbol === selectedSymbol)) {
       setSelectedSymbol(stocks[0].symbol);
     }
-  }, [stocks, selectedSymbol]);
+  }, [stocks]);
 
   const selectedStock = stocks.find((s) => s.symbol === selectedSymbol);
   const chartData = selectedStock ? transformSingleStockData(selectedStock) : [];

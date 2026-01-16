@@ -11,21 +11,31 @@ import {
   SidebarHeader,
   useSidebar,
 } from "@/modules/shared/ui";
-import { StockForm, Watchlist } from "@/modules/stocks/presentation/components";
+import {
+  PushNotificationsEnabler,
+  StockForm,
+  Watchlist,
+} from "@/modules/stocks/presentation/components";
 import { strings } from "@/modules/stocks/presentation/localization";
 import { useStockRepository } from "@/modules/stocks/presentation/state/StockRepositoryProvider";
 
 const Header = () => {
   return (
-    <div className='flex flex-row items-center gap-2'>
-      <div className='bg-foreground rounded-lg p-2 w-fit'>
-        <ChartSpline className='text-background' />
+    <div className='flex flex-col gap-4'>
+      <div className='flex flex-row items-center gap-2'>
+        <div className='bg-foreground rounded-lg p-2 w-fit'>
+          <ChartSpline className='text-background' />
+        </div>
+        <div className='flex flex-col items-center'>
+          <h1 className='text-lg font-bold '>{strings.header.title}</h1>
+          <span className='text-xs font-bold tracking-tight text-muted-foreground'>
+            {strings.header.subtitle}
+          </span>
+        </div>
       </div>
-      <div className='flex flex-col items-center'>
-        <h1 className='text-lg font-bold '>{strings.header.title}</h1>
-        <span className='text-xs font-bold tracking-tight text-muted-foreground'>
-          {strings.header.subtitle}
-        </span>
+      <div className='flex flex-col gap-2'>
+        <span className='text-base font-bold'>{strings.header.priceAlerts}</span>
+        <PushNotificationsEnabler />
       </div>
     </div>
   );

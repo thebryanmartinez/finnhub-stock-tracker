@@ -74,8 +74,8 @@ export const StockChart = ({ stocks }: { stocks: Stock[] }) => {
             accessibilityLayer
             data={chartData}
             margin={{
-              left: 12,
-              right: 12,
+              left: 24,
+              right: 24,
             }}
           >
             <CartesianGrid vertical={false} />
@@ -97,6 +97,7 @@ export const StockChart = ({ stocks }: { stocks: Stock[] }) => {
             <Line
               dataKey='price'
               type='linear'
+              isAnimationActive={false}
               stroke='var(--chart-1)'
               strokeWidth={2}
               dot={{
