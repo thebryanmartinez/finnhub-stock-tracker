@@ -1,10 +1,9 @@
 import { Stock } from "@/modules/stocks/domain/entitites";
-import { IStockRepository } from "@/modules/stocks/domain/repositories";
 import { strings } from "@/modules/stocks/presentation/localization";
 
 import { db } from "./db";
 
-export class DexieStockRepository implements IStockRepository {
+export class DexieStockRepository {
   async getStocks(): Promise<Record<string, Stock>> {
     try {
       const stocks = await db.stocks.toArray();
