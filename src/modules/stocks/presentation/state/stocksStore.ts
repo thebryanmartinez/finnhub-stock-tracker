@@ -20,6 +20,7 @@ export const useStocksStore = create<StocksState>((set, get) => ({
           priceAlert,
           previousPrice: 0,
           isBelowAlert: false,
+          isNotificationSent: false,
           history: [],
         },
       },
@@ -44,6 +45,21 @@ export const useStocksStore = create<StocksState>((set, get) => ({
           isBelowAlert,
           previousPrice: stock.price,
           history: [...stock.history, price].slice(-40),
+        },
+      },
+    });
+  },
+
+  markNotificationSent: (symbol) => {
+    const stock = get().stocks[symbol];
+    if (!stock) return;
+
+    set({
+      stocks: {
+        ...get().stocks,
+        [symbol]: {
+          ...stock,
+          isNotificationSent: true,
         },
       },
     });

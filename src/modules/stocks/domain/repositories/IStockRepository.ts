@@ -5,5 +5,6 @@ export interface IStockRepository {
   addStock(symbol: string, priceAlert: number): void;
   removeStock(symbol: string): void;
   updatePrice(symbol: string, price: number, isBelowAlert: boolean): void;
+  markNotificationSent(symbol: string): void;
   reset(): void;
 }
