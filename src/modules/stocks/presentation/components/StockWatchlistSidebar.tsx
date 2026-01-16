@@ -46,12 +46,12 @@ export const Footer = () => {
   const { toggleSidebar } = useSidebar();
 
   return (
-    <div>
-      <ThemeToggle />
-      <Button onClick={toggleSidebar} className='w-full md:hidden mb-10' variant='outline'>
+    <div className='mb-10 md:mb-0 gap-4 flex flex-col'>
+      <Button onClick={toggleSidebar} className='w-full md:hidden' variant='outline'>
         <X />
         {strings.watchlist.footer.close}
       </Button>
+      <ThemeToggle />
     </div>
   );
 };

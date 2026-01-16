@@ -15,9 +15,10 @@ export function ThemeToggle() {
   };
 
   return (
-    <Button size='icon' className='cursor-pointer' onClick={changeTheme}>
-      <Sun className='h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90' />
-      <Moon className='absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0' />
+    <Button className='cursor-pointer w-full gap-2' onClick={changeTheme}>
+      Change theme
+      <Sun className='transition-all dark:hidden' />
+      <Moon className='hidden transition-all dark:inline-block' />
     </Button>
   );
 }
