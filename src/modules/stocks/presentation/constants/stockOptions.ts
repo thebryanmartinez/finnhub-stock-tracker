@@ -5,7 +5,7 @@ export const STOCK_OPTIONS = [
   { label: "Amazon", value: "AMZN" },
   { label: "Meta", value: "META" },
   { label: "NVIDIA", value: "NVDA" },
-  { label: "Bitcoin", value: "BINANCE:BTCUSDT" },
-  { label: "Solana", value: "BINANCE:SOLUSDT" },
-  { label: "Binance Coin", value: "BINANCE:BNBUSDT" },
+  { label: "Bitcoin", value: "BTC" },
+  { label: "Solana", value: "SOL" },
+  { label: "Binance Coin", value: "BNB" },
 ] as const;
