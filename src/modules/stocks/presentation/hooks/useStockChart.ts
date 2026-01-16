@@ -19,7 +19,7 @@ const calculateYDomain = (stock: Stock | undefined): [number, number] => {
   const minPrice = Math.min(...stock.history);
   const maxPrice = Math.max(...stock.history);
 
-  const padding = (maxPrice - minPrice) * 0.05;
+  const padding = (maxPrice - minPrice) * 0.15;
 
   return [Math.max(0, minPrice - padding), maxPrice + padding];
 };
